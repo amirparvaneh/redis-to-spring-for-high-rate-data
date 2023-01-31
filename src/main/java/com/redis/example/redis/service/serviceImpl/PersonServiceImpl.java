@@ -6,6 +6,8 @@ import com.redis.example.redis.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 
 @Service
 public class PersonServiceImpl implements PersonService {
@@ -21,5 +23,10 @@ public class PersonServiceImpl implements PersonService {
     @Override
     public void savePerson(Person person) {
         personsRepository.save(person);
+    }
+
+    @Override
+    public List<Person> getAllPerson(){
+        return (List<Person>) personsRepository.findAll();
     }
 }
