@@ -1,9 +1,9 @@
 package com.redis.example.redis.service;
 
 import com.redis.example.redis.domain.Customer;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 
 public interface CustomerService {
@@ -14,7 +14,9 @@ public interface CustomerService {
 
     Long countTheCustomer();
 
-    void deleteCustomer(Long Id);
+    void deleteCustomer(String Id);
 
     void deleteAllCustomer();
+
+    Optional<Customer> getCustomerById(String msisdn);
 }

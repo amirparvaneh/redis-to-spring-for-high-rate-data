@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
@@ -30,12 +31,12 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public Long countTheCustomer() {
-        return customerRepository.countCustomerByMsisdn();
+        return customerRepository.couCustomer();
     }
 
     @Override
-    public void deleteCustomer(Long Id) {
-        customerRepository.deleteById(Id);
+    public void deleteCustomer(String msisdn) {
+        customerRepository.deleteById(msisdn);
     }
 
     @Override
@@ -43,5 +44,9 @@ public class CustomerServiceImpl implements CustomerService {
         customerRepository.deleteAll();
     }
 
+    @Override
+    public Optional<Customer> getCustomerById(String msisdn) {
+        return customerRepository.findById(msisdn);
+    }
 
 }
