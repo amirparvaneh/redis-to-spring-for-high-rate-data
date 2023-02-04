@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/redis")
+@RequestMapping("/api/v1/person")
 public class PersonController {
 
     private final PersonServiceImpl personService;

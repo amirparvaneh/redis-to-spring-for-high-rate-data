@@ -1,20 +1,21 @@
 package com.redis.example.redis.domain;
 
 
-import lombok.*;
+import com.redis.om.spring.annotations.Document;
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.redis.core.RedisHash;
 import org.springframework.data.redis.core.index.Indexed;
 
-
-@RedisHash("person_redis")
-@Getter
-@Setter
 @Data
-public class Person {
+@Setter
+@Getter
+@Document
+public class Customer {
 
     @Id
-    private Long id;
+    private String msisdn;
     @Indexed
     private Integer order0;
     @Indexed
@@ -33,4 +34,5 @@ public class Person {
     private Integer order7;
     @Indexed
     private Long poolId;
+
 }
