@@ -20,7 +20,7 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 @Configuration
 //@EnableRedisRepositories
-@EnableRedisDocumentRepositories
+//@EnableRedisDocumentRepositories
 public class RedisConfiguration {
 
 

@@ -3,6 +3,8 @@ package com.redis.example.redis.controller;
 
 import com.redis.example.redis.domain.Customer;
 import com.redis.example.redis.service.serviceImpl.CustomerServiceImpl;
+import lombok.extern.java.Log;
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,7 +14,6 @@ import java.util.Optional;
 @RestController
 @RequestMapping(value = "/api/v1/customer")
 public class CustomerController {
-
     private CustomerServiceImpl customerService;
 
     @Autowired
@@ -37,6 +38,7 @@ public class CustomerController {
 
     @PostMapping(value = "/insertBulk")
     public void insetBulKCustomers(Long number, @RequestParam String firstId) {
+        long start = System.currentTimeMillis();
         for (int i = 0; i < number; i++) {
             Customer customer = new Customer();
             customer.setMsisdn(firstId + i);
@@ -51,6 +53,9 @@ public class CustomerController {
             customer.setPoolId(number + i);
             customerService.saveCustomer(customer);
         }
+        long end = System.currentTimeMillis();
+        long elapsedTime = end - start;
+        System.out.println("$$$$ time is "+ elapsedTime);
     }
 
     @GetMapping(value = "/{msisdn}")
@@ -59,5 +64,10 @@ public class CustomerController {
         Optional<Customer> customer;
         customer = customerService.getCustomerById(msisdn);
         return customer.get();
+    }
+
+    @DeleteMapping
+    public void deleteAllCustomer(){
+        customerService.deleteAllCustomer();
     }
 }

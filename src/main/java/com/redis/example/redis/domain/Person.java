@@ -12,7 +12,6 @@ import org.springframework.data.redis.core.index.Indexed;
 @Setter
 @Data
 public class Person {
-
     @Id
     private Long id;
     @Indexed
